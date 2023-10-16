@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>decrypt</title>
+</head>
+<body>
+    <div class="row">
+        <div class="col-12-small">
+            <div class="column">
+
+                <h1>Success! You have successfully decrypted your message!</h1>
+            </div>
+            <div class="column">
+
+                <h1>Your original message is: <b>{{msg}}</b></h1>
+            </div>
+        <p></p>
+        <div class="column">
+
+            <a href="/crypt/">click here</a> to go back to the encryptor
+        </div>
+    </div>
+</body>
+</html>
+{% endblock content %}

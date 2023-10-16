@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <section>
+        <article>
+            <div class="row">
+                <div class="col-12-small">
+                    <div class="row">
+                        <div class="column">
+                            <h1>
+                                Utilizing your 3 keys: the start key: {{crypt.start_key}}, the key increment key: {{crypt.key_increment}},and the key increments increment key: {{crypt.key_increments_increment}};
+                            </h1>
+                        </div>
+                        <div class="column">
+
+                            <h2>
+                                we have deduced that your original message was: <b>{{crypt.message}}</b>
+                            </h2>
+                        </div>
+                        <div class="column">
+                            <a href="/crypt/">Click Here</a> to go back to the encrypter
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
+{% endblock content %}
+    

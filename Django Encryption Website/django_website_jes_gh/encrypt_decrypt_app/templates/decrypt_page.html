@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+
+    
+
+{% block content %}
+<section>
+    <article>
+        
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+        <html>
+            <head>
+                <link rel="stylesheet" href="{% static 'style.css' %}">
+            </head>
+            <h1>Hello and welcome to the decrypter!</h1>
+            <h2>To get started, paste the encrypted message into the field below. Then, recall the 3 different keys you used and in which order and enter those into the corresponding key fields</h2>
+            <div></div>
+            <section>
+                <article>
+                    <div class="row">
+                        <div class="col-12-medium">
+                            <div class="row gtr-50">
+                            <form method="POST" id="form">
+                                {% csrf_token %}
+                                {%for item in form%}
+                                
+                                
+                                {% if item.name == "start_key" %}
+                                <div class="col-6 col-12-small">
+                                <label for="start_key">Enter your starting key:</label>{{item}}
+                                </div>
+                                {%endif%}
+                                {% if item.name == "message" %}
+                                <div class="col-6 col-12-small">
+                                <label for="message">Paste the encrypted message:</label> {{item}}
+                                </div>
+                                {% endif %}
+                                {% if item.name == "key_increment" %}
+                                <div class="col-6 col-12-small">
+                                <label for="start_key">Enter your key increment:</label> {{item}}
+                                </div>
+                                {%endif%}
+                                {% if item.name == "key_increments_increment" %}
+                                <div class="col-6 col-12-small">
+                                <label for="start_key">Enter your key increments increment:</label> {{item}}
+                                </div>
+                                {%endif%}
+                                {%endfor%}
+                                <input type="submit" value="submit">
+                            </form  >
+                            </div>
+                        </div>
+                    </div>
+            </article>
+        </section>
+        
+        <script>
+            const msg = document.getElementById('message').value
+            console.log(msg);
+            const crypt = JSON.parse('{{ crypt|safe }}')
+            console.log(crypt);
+            const pretty_json = JSON.stringify(crypt,null,2)
+            document.getElementById('crypt').innerHTML = pretty_json
+            </script>
+
+    </article>
+</section> 
+{% endblock %}
+
+
+</html>

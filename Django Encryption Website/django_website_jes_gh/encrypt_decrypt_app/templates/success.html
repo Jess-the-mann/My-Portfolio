@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SUCCESS</title>
+    </head>
+    <body>
+        <h1>It Worked! your encrypted message is :<b>{{crypt.msg}}</b></h1>
+        <p></p>
+        <div class="row">
+            <div class="column">
+                <div class="row gtr-50">
+                    <div class="col-12-medium">
+
+                        <h2>Please copy and paste the message, then head on over to the decryptor. Also be sure to memorize your 3 keys.</h2>
+                        <p>
+                        </p>
+                    </div>
+                    <div class="col-12-small">
+
+                        <h4>
+                            your start key is: <b>{{crypt.start_key}}</b>
+                        </h4>
+                    </div>
+                    <p>
+                    </p>
+                    <div class="col-12-small">
+
+                        <h4>
+                            your key increment is: <b>{{crypt.key_increment}}</b>
+                        </h4>
+                    </div>
+                    <p>
+                    </p>
+                    <div class="col-12-small">
+
+                        <h4>
+                            your key increments increment is: <b>{{crypt.key_increments_increment}}</b>
+                        </h4>
+                    </div>
+                </div>
+                <a href="/decrypt/"><b>Click Here</b></a> for the decryptor
+                <p></p>
+                
+                
+                <a href="{% url 'crypt-decrypt' pk=crypt.pk %}"><b>Click Here</b></a> if your computer <b>can't</b> copy and paste the message
+            </div>
+        </div>
+</body>
+</html>
+{% endblock content %}
